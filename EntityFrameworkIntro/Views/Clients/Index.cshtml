@@ -1,0 +1,42 @@
+﻿@model IEnumerable<EntityFrameworkIntro.Models.Clients>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<body>
+    <table class="table">
+        <thead class="table-dark">
+            <tr>       
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Dirección</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaNacimiento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Direccion)
+                </td>
+                <td>
+                    <a class="btn btn-outline-primary btn-sm" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                    <a class="btn btn-outline-primary btn-sm" asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                    <a class="btn btn-outline-primary btn-sm" asp-action="Delete" asp-route-id="@item.Id">Borrar</a>
+                </td>       
+            </tr>}
+        </tbody>
+    </table>
+    <a class="btn btn-primary" role="button" asp-action="create">Agregar</a>
+</body>
